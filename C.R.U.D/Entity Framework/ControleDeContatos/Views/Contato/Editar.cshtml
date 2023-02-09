@@ -1,0 +1,38 @@
+﻿@model ContatoModel
+@{
+    ViewData["Title"] = "Editar Contato";
+}
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<div class="text-center">
+    <h1 class="m-auto font-monospace">Editar contato</h1>
+</div>
+<br>
+<form asp-controller="Contato" asp-action="Alterar" method="post" class="w-50 m-auto">
+
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group p-2">
+        <label for="nome">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="form-group p-2">
+        <label for="email">E-mail</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail do contato">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div class="form-group p-2">
+        <label for="celular">Celular</label>
+        <input type="text" asp-for="Celular" class="form-control" placeholder="Digite o celular do contato">
+        @Html.ValidationMessageFor(x => x.Celular)
+    </div>
+    
+    <button type="submit" class="mb-2 btn btn-success d-grid gap-2 w-100 me-1 mx-auto">Alterar</button>
+    <a class="btn btn-primary d-grid gap-2 w-20" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+    
+</form>

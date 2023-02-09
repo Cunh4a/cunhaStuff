@@ -1,0 +1,72 @@
+﻿@model List<ContatoModel>
+@{
+    ViewData["Title"] = "Listagem de Contatos";
+}
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<div class="text-center">
+
+    <h1 class="font-semibold">Listagem de Contatos</h1>
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="botVerde close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="botVermelho close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <table style="height: 100px;" class="table" id="table-contatos">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th class="text-center">Nome</th>
+                <th class="text-center">E-mail</th>
+                <th class="text-center">Celular</th>
+                <th class="text-center"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ContatoModel contato in Model)
+                {
+                    <tr>
+                        <th class="py-4" scope="row">@contato.Id</th>
+                        <td class="py-4">@contato.Nome</td>
+                        <td class="py-4">@contato.Email</td>
+                        <td class="py-4">@contato.Celular</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary rounded-2 me-2" asp-route-id="@contato.Id"
+                            asp-controller="Contato" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger rounded-2" asp-route-id="@contato.Id"
+                            asp-controller="Contato" asp-action="ApagarConfirmacao">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <div class="text-md-start">
+        <a class="btn btn-info" role="button" asp-controller="Contato" asp-action="Criar">+ Novo contato</a>
+    </div>
+
+</div>
+
+
