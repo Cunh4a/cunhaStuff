@@ -1,0 +1,45 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.field-validation-error {
+    color: #e01d1d;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.botVerde {
+    color: white;
+    background-color: #59b758;
+}
+
+.botVermelho {
+    color: white;
+    background-color: #d44040;
+}
+
+.close-alert {
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    position: absolute;
+    right: -13px;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+}
